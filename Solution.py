@@ -15,7 +15,33 @@ class Solution:
         answer = float(sum(result)/k)
         print(answer)
         return answer
+    
+    # 1456 Maximum number of Vowels in a substring of Given Length
+    def maxVowels(s: str, k: int) -> int:
+        vowel = ['a','e','i','o','u']
+        num = 0
+        times = 0
+        str_length = 0
+        answer = 0
 
+        for i in s:
+            while str_length < k:
+                try:
+                    if s[times+str_length] in vowel:
+                        num +=1
+                    str_length+=1
+                except:
+                    break
+                
+            if answer < num:
+                answer = num
+            num = 0
+            str_length = 0
+            times +=1
+            
+        
+        print(answer)
 
 if __name__ == "__main__":
-    Solution.findMaxAverage(nums=[1,12,-5,-6,50,3], k = 4)
+    #Solution.findMaxAverage(nums=[1,12,-5,-6,50,3], k = 4)
+    Solution.maxVowels(s='abciiidef',k=3)
