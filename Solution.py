@@ -42,16 +42,13 @@ class Solution:
 
 
     def isSubsequence(s: str, t: str) -> bool:
-        answer = []
-        times = 0
-        for i in t:
-            if i in s:
-                answer.append(i)
-                times +=1
-                if ''.join(answer) != s[:times]:
-                    answer = []
-                    answer.append(i)
-        if ''.join(answer) == s:
+        i = 0
+        j = 0
+        while (i < len(s) and j < len(t)):
+            if s[i] == t[j]:
+                i+=1
+            j+=1
+        if i == len(s):
             print("True")
             return True
         else:
