@@ -42,18 +42,20 @@ class Solution:
 
 
     def isSubsequence(s: str, t: str) -> bool:
-        times = 0
-        previous = 0
         answer = []
-        for i in s:
-            for j in t:
-                if i == j and times >= previous:
-                    previous = times
-                    answer.append(j)
-                times+=1
-        if s in ''.join(answer):
+        times = 0
+        for i in t:
+            if i in s:
+                answer.append(i)
+                times +=1
+                if ''.join(answer) != s[:times]:
+                    answer = []
+                    answer.append(i)
+        if ''.join(answer) == s:
+            print("True")
             return True
         else:
+            print("False")
             return False
                     
 
