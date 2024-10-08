@@ -38,10 +38,27 @@ class Solution:
             num = 0
             str_length = 0
             times +=1
-            
-        
         print(answer)
+
+
+    def isSubsequence(s: str, t: str) -> bool:
+        times = 0
+        previous = 0
+        answer = []
+        for i in s:
+            for j in t:
+                if i == j and times >= previous:
+                    previous = times
+                    answer.append(j)
+                times+=1
+        if s in ''.join(answer):
+            return True
+        else:
+            return False
+                    
+
 
 if __name__ == "__main__":
     #Solution.findMaxAverage(nums=[1,12,-5,-6,50,3], k = 4)
-    Solution.maxVowels(s='abciiidef',k=3)
+    #Solution.maxVowels(s='abciiidef',k=3)
+    Solution.isSubsequence(s='abc',t='ahbgdc')
