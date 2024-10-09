@@ -40,7 +40,7 @@ class Solution:
             times +=1
         print(answer)
 
-
+    # 392 is subsequence
     def isSubsequence(s: str, t: str) -> bool:
         i = 0
         j = 0
@@ -55,9 +55,24 @@ class Solution:
             print("False")
             return False
                     
+    #238 Product of Array Except Self (除了同位数，其他所有数字相乘)
+    def productExceptSelf(nums):
+        i = 0
+        answer = []
+        while i < len(nums):
+            sum = 1
+            for j in range(len(nums)):
+                if j != i:
+                    sum = nums[j] * sum
+                else:
+                    continue
+            answer.append(sum)
+            i+=1
+        print(answer)
 
 
 if __name__ == "__main__":
     #Solution.findMaxAverage(nums=[1,12,-5,-6,50,3], k = 4)
     #Solution.maxVowels(s='abciiidef',k=3)
-    Solution.isSubsequence(s='abc',t='ahbgdc')
+    #Solution.isSubsequence(s='abc',t='ahbgdc')
+    Solution.productExceptSelf(nums=[1,2,3,4])
