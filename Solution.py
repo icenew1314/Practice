@@ -70,9 +70,41 @@ class Solution:
             i+=1
         print(answer)
 
+    def reverseWords(self, s: str) -> str:
+        word = []
+        lis_word = []
+        time = 1
+        for i in s:
+            word.append(i)
+            if i == ' ' or time == len(s):
+                lis_word.append(''.join(word))
+                word = []
+            time +=1
+        word = []
+        for i in lis_word[::-1]:
+            if i == '' or i == ' ':
+                pass
+            else:
+                word.append(''.join(i).strip())
+        return ' '.join(word).strip()
 
+    def findMaxAverage(nums, k: int) -> float:
+        result = []
+        for i in range(k):
+            y = [abs(x) for x in nums]
+            current = max(y)
+            if current in nums:
+                result.append(current)
+                nums.remove(current)
+            else:
+                result.append(-current)
+                nums.remove(-current)
+        answer = float(sum(result)/k)
+        return answer
+        
 if __name__ == "__main__":
     #Solution.findMaxAverage(nums=[1,12,-5,-6,50,3], k = 4)
     #Solution.maxVowels(s='abciiidef',k=3)
     #Solution.isSubsequence(s='abc',t='ahbgdc')
-    Solution.productExceptSelf(nums=[1,2,3,4])
+    #Solution.productExceptSelf(nums=[1,2,3,4])
+    Solution.findMaxAverage(nums=[1,12,-5,-6,50,3],k=4)
