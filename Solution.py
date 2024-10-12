@@ -101,10 +101,46 @@ class Solution:
                 nums.remove(-current)
         answer = float(sum(result)/k)
         return answer
+
+    def canPlaceFlowers(self, flowerbed, n: int) -> bool:
+        time = 1
+        already = []
+        canbe = []
+        be = []
+        result = 0
+        for i in flowerbed:
+            if i == 1 and time == 1:
+                already.append(time)
+                already.append(time+1)
+            if i == 1 and time == len(flowerbed):
+                already.append(time-1)
+                already.append(time)
+            if i == 1 and time > 1 and time < len(flowerbed):
+                already.append(time-1)
+                already.append(time)
+                already.append(time+1)
+            if time not in already:
+                if time-1 in canbe:
+                    pass
+                else:
+                    canbe.append(time)
+            time+=1
+        already = list(set(already))
+        for i in canbe:
+            if i not in already:
+                be.append(i)
+        result = len(be)
+
+        if n > result:
+            return False
+        else:
+            return True
+
         
 if __name__ == "__main__":
     #Solution.findMaxAverage(nums=[1,12,-5,-6,50,3], k = 4)
     #Solution.maxVowels(s='abciiidef',k=3)
     #Solution.isSubsequence(s='abc',t='ahbgdc')
     #Solution.productExceptSelf(nums=[1,2,3,4])
-    Solution.findMaxAverage(nums=[1,12,-5,-6,50,3],k=4)
+    #Solution.findMaxAverage(nums=[1,12,-5,-6,50,3],k=4)
+    Solution.canPlaceFlowers(flowerbed=[1,0,0,0,1],n =1)
